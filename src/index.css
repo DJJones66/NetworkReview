@@ -1,0 +1,261 @@
+/* Global styles for NetworkReview plugin */
+
+/* CSS Reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Plugin container base styles */
+.network-review-plugin {
+  width: 100%;
+  min-height: 400px;
+  background: transparent;
+  position: relative;
+}
+
+/* CSS Custom Properties for theming */
+:root {
+  --network-review-primary-color: #3498db;
+  --network-review-secondary-color: #2c3e50;
+  --network-review-text-color: #34495e;
+  --network-review-light-text: #7f8c8d;
+  --network-review-background: #ffffff;
+  --network-review-border: #e1e5e9;
+  --network-review-shadow: rgba(0, 0, 0, 0.08);
+  --network-review-hover-shadow: rgba(0, 0, 0, 0.12);
+  --network-review-transition: all 0.3s ease;
+}
+
+/* Dark theme custom properties */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --network-review-primary-color: #3498db;
+    --network-review-secondary-color: #ecf0f1;
+    --network-review-text-color: #ecf0f1;
+    --network-review-light-text: #bdc3c7;
+    --network-review-background: #2c3e50;
+    --network-review-border: #34495e;
+    --network-review-shadow: rgba(0, 0, 0, 0.3);
+    --network-review-hover-shadow: rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Utility classes */
+.network-review-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.network-review-hidden {
+  display: none !important;
+}
+
+.network-review-visible {
+  display: block !important;
+}
+
+/* Animation utility classes */
+.network-review-fade-in {
+  animation: networkReviewFadeIn 0.5s ease-in-out forwards;
+}
+
+.network-review-fade-out {
+  animation: networkReviewFadeOut 0.5s ease-in-out forwards;
+}
+
+.network-review-slide-in-left {
+  animation: networkReviewSlideInLeft 0.5s ease-out forwards;
+}
+
+.network-review-slide-out-right {
+  animation: networkReviewSlideOutRight 0.5s ease-out forwards;
+}
+
+/* Keyframe animations */
+@keyframes networkReviewFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes networkReviewFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes networkReviewSlideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes networkReviewSlideOutRight {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* Focus styles for accessibility */
+.network-review-plugin *:focus {
+  outline: 2px solid var(--network-review-primary-color);
+  outline-offset: 2px;
+}
+
+/* Button reset styles */
+.network-review-plugin button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
+  color: inherit;
+}
+
+/* Link reset styles */
+.network-review-plugin a {
+  color: var(--network-review-primary-color);
+  text-decoration: none;
+  transition: var(--network-review-transition);
+}
+
+.network-review-plugin a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive typography */
+@media (max-width: 768px) {
+  .network-review-plugin {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .network-review-plugin {
+    font-size: 13px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --network-review-primary-color: #0066cc;
+    --network-review-border: #000000;
+    --network-review-shadow: rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .network-review-plugin *,
+  .network-review-plugin *::before,
+  .network-review-plugin *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .network-review-plugin {
+    background: white !important;
+    color: black !important;
+  }
+  
+  .network-review-plugin * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
+
+/* Loading state styles */
+.network-review-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+.network-review-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--network-review-border);
+  border-top: 4px solid var(--network-review-primary-color);
+  border-radius: 50%;
+  animation: networkReviewSpin 1s linear infinite;
+}
+
+@keyframes networkReviewSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error state styles */
+.network-review-error {
+  text-align: center;
+  padding: 20px;
+  color: var(--network-review-light-text);
+  background: var(--network-review-background);
+  border: 1px solid var(--network-review-border);
+  border-radius: 8px;
+}
+
+/* Scrollbar styles for webkit browsers */
+.network-review-plugin ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.network-review-plugin ::-webkit-scrollbar-track {
+  background: var(--network-review-border);
+  border-radius: 4px;
+}
+
+.network-review-plugin ::-webkit-scrollbar-thumb {
+  background: var(--network-review-light-text);
+  border-radius: 4px;
+}
+
+.network-review-plugin ::-webkit-scrollbar-thumb:hover {
+  background: var(--network-review-text-color);
+}

@@ -1,0 +1,40 @@
+{
+  "name": "braindriveNetworkReview",
+  "version": "1.0.0",
+  "description": "A rotating review display widget that shows customer testimonials and reviews",
+  "main": "dist/remoteEntry.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve --mode development",
+    "start": "webpack serve --mode development --open"
+  },
+  "braindrive": {
+    "pluginType": "frontend",
+    "initializer": "plugin_initializer.py",
+    "compatibility": ">=1.0.0",
+    "category": "marketing",
+    "permissions": ["storage.read", "storage.write"]
+  },
+  "dependencies": {
+    "html-webpack-plugin": "^5.6.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.0",
+    "webpack-dev-server": "^4.15.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.0.0",
+    "ts-loader": "^9.4.0",
+    "css-loader": "^6.8.0",
+    "style-loader": "^3.3.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0",
+    "postcss-loader": "^7.3.0"
+  },
+  "keywords": ["braindrive", "plugin", "reviews", "testimonials", "marketing"],
+  "author": "BrainDrive",
+  "license": "MIT"
+}
