@@ -101,7 +101,7 @@ class NetworkReviewLifecycleManager(BaseLifecycleManager):
         self.plugin_data = {
             "name": "BrainDriveNetworkReview",
             "description": "A rotating review display widget that shows customer testimonials and reviews in an attractive card format",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "type": "frontend",
             "icon": "Star",
             "category": "marketing",
